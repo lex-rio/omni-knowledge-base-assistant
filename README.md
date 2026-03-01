@@ -1,67 +1,72 @@
 # Omni Knowledge Base Assistant
 
 ## Table of Contents
-1. [High-Level Concept](#1-high-level-concept)
-2. [Value Proposition & Business Model](#2-value-proposition--business-model)
-3. [The User Experience](#3-the-user-experience)
-4. [Target Use Cases](#4-target-use-cases)
-5. [Integrations & Extensibility](#5-integrations--extensibility)
-6. [Technical Architecture & Security](#6-technical-architecture--security)
+1. [Executive Summary & Concept](#1-executive-summary--concept)
+2. [The Problem Statement](#2-the-problem-statement)
+3. [Value Proposition & Business Model](#3-value-proposition--business-model)
+4. [Product Packaging & Deployment](#4-product-packaging--deployment)
+5. [User Experience & Multi-Tenant Architecture](#5-user-experience--multi-tenant-architecture)
+6. [Target Use Cases](#6-target-use-cases)
+7. [Integrations & Extensibility](#7-integrations--extensibility)
+8. [Technical Architecture & Security](#8-technical-architecture--security)
+9. [Future Extensions (Roadmap)](#9-future-extensions-roadmap)
 
 ---
 
-## 1. High-Level Concept
-**Omni Knowledge Base Assistant** is an intelligent, multimodal knowledge hub that functions as a proactive personal assistant for corporate teams. It ingests a company's scattered data—documents, text, files, audio, and videos—and categorizes it into a unified semantic knowledge network. 
+## 1. Executive Summary & Concept
+**Omni Knowledge Base Assistant** is an intelligent, multimodal knowledge platform that functions as a proactive digital assistant for corporate teams. It securely aggregates scattered organizational data (documents, text, files, audio, video) and enables intelligent querying via Retrieval-Augmented Generation (RAG). 
 
-Instead of passively waiting for search queries, the Omni system acts as an active participant in daily workflows: reminding users of tasks, asking clarifying questions, and retrieving highly contextual information instantly.
+Instead of passively waiting for search queries, the Omni system acts as an active participant in daily workflows: answering contextual questions, reminding users of deadlines, generating reports, and automating business processes safely.
 
-## 2. Value Proposition & Business Model
-* **Uncompromising Data Security:** The biggest barrier to AI adoption in SMBs is data privacy. Omni guarantees that sensitive company data never leaks to public networks. 
-* **Hardware-as-a-Service (Appliance):** The product can be sold as a pre-configured physical "Knowledge Box" (hardware + pre-installed software). This provides a tangible, easy "plug-and-play" deployment for businesses without dedicated AI engineering teams.
-* **Target Market:** Small and Medium Businesses (SMBs) looking to optimize internal processes and knowledge sharing securely without relying on public cloud AI infrastructure.
+## 2. The Problem Statement
+Organizations struggle with the rapid accumulation of unstructured knowledge. Critical challenges include:
+* **Fragmented Information:** Data is scattered across PDFs, internal tools, emails, media files, and team conversations.
+* **Poor Searchability:** Traditional keyword search fails to understand context or intent, leading to wasted time.
+* **Security & Privacy Risks:** Companies cannot upload sensitive data (contracts, patient records, internal IP) to public cloud AI tools.
+* **Adoption Complexity:** SMBs lack the internal engineering expertise to build and manage secure AI infrastructure from scratch.
 
-## 3. The User Experience
-* **Proactive Assistant:** Interaction is radically simplified. The assistant pushes relevant information based on the current context and proactively manages user tasks, acting as a true digital co-worker.
-* **Multimodal Semantic Search:** Users can search across formats based on meaning, not just keywords. For example, a text query can return the exact timestamp of a relevant internal training video or an audio transcript.
-* **Multi-Tenant Context Isolation:** Designed for multi-user environments. Each employee operates within their own isolated context, ensuring privacy and highly personalized interactions based on their specific role and corporate permissions.
+## 3. Value Proposition & Business Model
+* **Uncompromising Data Security:** Omni guarantees that sensitive company data never leaks to public networks, providing full compliance with internal policies.
+* **Target Market:** Small and Medium Businesses (SMBs), legal offices, healthcare providers, and professional services lacking AI expertise but requiring strict data control.
+* **Professional Integration Services:** Beyond the core platform, our team monetizes custom integration services. We build tailored connectors for a client’s specific enterprise systems, ensuring seamless business process automation.
 
-## 4. Target Use Cases
-* **Legal & Compliance:** Indexes confidential case files locally. The Omni assistant drafts templates based purely on internal historical data and proactively reminds lawyers of filing deadlines, ensuring zero NDA breaches.
-* **Manufacturing & Engineering:** Indexes technical blueprints and video repairs. A technician entering an error code receives an exact video timestamp showing how a senior engineer previously fixed that specific issue.
-* **Private Healthcare:** Manages patient records and audio consultations. Integrates with medical cards while strictly adhering to HIPAA/GDPR through advanced data masking.
-* **Enterprise HR & Onboarding:** Automates repetitive employee queries. The assistant guides new hires through onboarding, reminding them of compliance videos and requesting necessary HR forms.
+## 4. Product Packaging & Deployment
+To accommodate different infrastructure capabilities, Omni is delivered in two distinct models:
 
-## 5. Integrations & Extensibility
-The assistant acts as a central hub, connecting to existing business tools (CRM, ERP, Task Managers) through highly controlled channels.
-* **Deterministic Actions:** We prioritize predictable integrations. When the AI needs to book a meeting or fetch client status, it uses strict API parameters, not open-ended text generation.
-* **Model Context Protocol (MCP):** Omni utilizes modern standards like MCP to securely connect AI models to varied external data sources and internal tools on a case-by-case, standardized basis.
+### Hardware Appliance ("AI-in-a-Box")
+A pre-configured physical server (with optional local GPU support) shipped directly to the client. It offers true plug-and-play setup and secure network isolation, acting as a fully localized AI infrastructure.
 
-## 6. Technical Architecture & Security
-*(Deep Dive for Engineering & IT)*
+### Software-Only Version
+A Docker-based deployment designed for on-premise installation on the client's existing enterprise servers. It provides the same security guarantees but leverages the company's internal hardware.
 
-The platform is built on a modular, multimodal Retrieval-Augmented Generation (RAG) architecture, specifically engineered for strict enterprise environments.
+## 5. User Experience & Multi-Tenant Architecture
+* **Proactive Assistant:** The AI reduces cognitive overhead by actively suggesting actions, proactively asking clarifying questions, and pushing contextually relevant alerts.
+* **Multimodal Semantic Search:** Users search by meaning across formats. A text query can pinpoint the exact timestamp in an internal training video or audio transcript.
+* **Role-Based Access Control (RBAC):** Omni is a multi-tenant system natively designed for teams. 
+* **Hierarchical Context Model:** Conversational memory and data retrieval are strictly filtered through isolated layers: Personal context, Team context, Organizational context, and System-wide knowledge. Each user’s interactions influence only their permitted scope.
 
-### 6.1. Core RAG & Multimodal Ingestion Pipeline
-* **Unified Semantic Search:** The ingestion engine processes diverse data types—documents, raw text, files, and importantly, unstructured media like video and audio transcripts. 
-* **Vectorization:** Content is dynamically chunked, processed through embedding models, and stored in a high-performance local vector database. Retrieval is based on deep semantic meaning and intent.
+## 6. Target Use Cases
+* **Legal & Compliance:** Indexes confidential case files locally. The assistant drafts templates based purely on internal historical data, ensuring zero NDA breaches.
+* **Manufacturing & Engineering:** Indexes technical blueprints and video repairs. A technician receives an exact video timestamp showing how to fix a specific machine error.
+* **Private Healthcare:** Manages patient records and audio consultations while strictly adhering to HIPAA/GDPR through advanced, localized data masking.
+* **Enterprise HR:** Automates repetitive queries, guiding new hires through onboarding by reminding them of compliance videos and tracking missing documentation.
 
-### 6.2. Multi-Tenant Context Architecture
-* **State & Context Isolation:** Natively supports multiple users within the same organization. Conversational memory and retrieved contexts are strictly segregated.
-* **Role-Based Retrieval:** The RAG pipeline filters search results dynamically based on the user's ID. Each user interacts with a highly personalized assistant that only accesses data permitted by their clearance level.
+## 7. Integrations & Extensibility
+The assistant acts as the intelligent core of the organization, connecting to existing tools (CRMs, ERPs, task trackers) via tailored connectors provided by our team.
 
-### 6.3. LLM Routing & Security Enclaves
-The system features a flexible LLM routing layer, allowing operations via local or external models based on the client's security policy.
+* **Deterministic Action Layer:** Knowledge and action layers are strictly deterministic and auditable. We do not rely on non-deterministic generation (like parsing AI-generated markdown) for execution logic.
+* **Model Context Protocol (MCP):** We utilize robust protocols like MCP to establish secure, standardized API connections between the AI engine and external data sources, eliminating "hallucinations" during critical database updates or webhook triggers.
 
-* **Deployment A: Air-Gapped Appliance (Fully Local)**
-    * Delivered as a physical hardware appliance with pre-installed software.
-    * Employs local Open-Source LLMs and local embedding models.
-    * **Zero-Trust Guarantee:** Data never leaves the physical premises. There is zero internet dependency, eliminating all risks of external data leaks.
-* **Deployment B: Secure Hybrid Model (External Cloud LLM)**
-    * Designed for clients requiring the advanced reasoning of external Cloud LLMs (e.g., OpenAI, Anthropic) but who cannot expose sensitive data.
-    * **Sanitization Pipeline:** Before any prompt hits the external API, a deterministic local pre-processing layer identifies, masks, and encrypts Personally Identifiable Information (PII) and corporate secrets.
-    * **Contextual Rehydration:** The external LLM processes an anonymized prompt. Upon receiving the response, the local enclave securely re-inserts (rehydrates) the sensitive data before the user sees the final output.
+## 8. Technical Architecture & Security
+At its core, Omni utilizes a modular RAG architecture with flexible Large Language Model (LLM) routing based on the client's security policy.
 
-### 6.4. Deterministic Integrations
-To function reliably without AI hallucinations during critical business processes:
-* **Protocol-Driven (MCP):** Omni relies on the Model Context Protocol (MCP) to establish secure, standardized connections between the AI engine and external data sources.
-* **Action Execution:** When triggering webhooks or updating databases, the system relies on strictly defined, deterministic API calls and structured JSON schemas, ensuring 100% predictable behavior.
+### Fully Local Mode (Air-Gapped)
+All components—vector database, knowledge storage, embedding generation, and LLM inference—run entirely on-premise. Data physically never leaves the local network, making it the ultimate solution for highly sensitive industries.
+
+### Secure Hybrid Mode (Cloud LLM with Controlled Exposure)
+If external cloud LLMs (e.g., OpenAI, Anthropic) are utilized for superior reasoning, the local core employs a pre-filtering and redaction layer. It applies token-level sensitive data masking and deterministic preprocessing before API transmission. The cloud LLM processes anonymized data, and the local system securely rehydrates the real data before displaying the response to the user.
+
+## 9. Future Extensions (Roadmap)
+* **Agent-Based Automation:** Enabling the system to chain multiple tasks independently.
+* **Voice & Mobile Interfaces:** Extending the assistant to native mobile apps and voice-activated hardware endpoints.
+* **Federated Knowledge Sharing:** Encrypted, cross-organization data syncing to allow secure collaboration between distinct corporate entities.
