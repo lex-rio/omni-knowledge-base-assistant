@@ -46,7 +46,8 @@ A Docker-based deployment designed for on-premise installation on the client's e
 
 ## 5. User Experience & Multi-Tenant Architecture
 * **Proactive Assistant:** The AI reduces cognitive overhead by actively suggesting actions, proactively asking clarifying questions, and pushing contextually relevant alerts.
-* **Multimodal Semantic Search:** Users search by meaning across formats. A text query can pinpoint the exact timestamp in an internal training video or audio transcript.
+* **Voice & Multimodal Interaction:** Users query the system via text or voice. The assistant transcribes audio and can pinpoint the exact timestamp in an internal training video or audio transcript.
+* **Privacy-First Communication:** Omni supports an **Abstract Messenger** layer. While it integrates with mainstream tools, it is designed to work over **P2P protocols or self-hosted channels**, ensuring that conversation data never touches third-party cloud servers.
 * **Role-Based Access Control (RBAC):** Omni is a multi-tenant system natively designed for teams. 
 * **Hierarchical Context Model:** Conversational memory and data retrieval are strictly filtered through isolated layers: Personal context, Team context, Organizational context, and System-wide knowledge. Each user’s interactions influence only their permitted scope.
 
@@ -57,10 +58,11 @@ A Docker-based deployment designed for on-premise installation on the client's e
 * **Enterprise HR:** Automates repetitive queries, guiding new hires through onboarding by reminding them of compliance videos and tracking missing documentation.
 
 ## 7. Integrations & Extensibility
-The assistant acts as the intelligent core of the organization, connecting to existing tools (CRMs, ERPs, task trackers) via tailored connectors provided by our team.
+The assistant acts as the intelligent core of the organization, connecting to existing tools and communication channels.
 
+* **Abstract Messenger Gateway:** A unified interface for interacting with Omni. While it supports enterprise bots (Slack, Teams, Telegram), it natively allows for **Direct-to-User P2P communication**, bypassing centralized messenger servers for high-security environments.
 * **Deterministic Action Layer:** Knowledge and action layers are strictly deterministic and auditable. We do not rely on non-deterministic generation (like parsing AI-generated markdown) for execution logic.
-* **Model Context Protocol (MCP):** We utilize robust protocols like MCP to establish secure, standardized API connections between the AI engine and external data sources, eliminating "hallucinations" during critical database updates or webhook triggers.
+* **Model Context Protocol (MCP):** We utilize robust protocols like MCP to establish secure, standardized API connections between the AI engine and external data sources (CRMs, ERPs, task trackers), eliminating "hallucinations" during critical database updates or webhook triggers.
 
 ## 8. Technical Architecture & Security
 At its core, Omni utilizes a modular RAG architecture with flexible Large Language Model (LLM) routing based on the client's security policy.
@@ -73,6 +75,9 @@ If external cloud LLMs (e.g., OpenAI, Anthropic) are utilized for superior reaso
 
 ### Zero-Knowledge Hybrid Infrastructure
 To bridge the gap between cloud-scale reasoning and absolute data privacy, Omni implements a Zero-Knowledge architectural pattern. Sensitive data (PII, financial figures, legal identifiers) is masked with deterministic tokens on the local appliance before being transmitted to cloud LLMs. The "mapping keys" required to rehydrate this data into a human-readable format never leave the client's local network. This ensures that even in the event of a provider-side breach, any intercepted data remains mathematically indecipherable and useless to third parties.
+
+### Sovereign Interaction Layer
+Omni's communication protocol is designed to eliminate "meta-data leakage." In its highest security configuration, the system utilizes peer-to-peer (P2P) messaging directly with the user's client, ensuring that neither the content nor the metadata of the conversation passes through a third-party server. This makes the interaction layer as secure as the data storage itself.
 
 ## 9. Future Extensions (Roadmap)
 * **Agent-Based Automation:** Enabling the system to chain multiple tasks independently.
