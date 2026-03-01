@@ -5,10 +5,15 @@
 2. [The Problem Statement](#2-the-problem-statement)
 3. [Value Proposition & Business Model](#3-value-proposition--business-model)
 4. [Product Packaging & Deployment](#4-product-packaging--deployment)
+   - [Hardware Appliance ("AI-in-a-Box")](#hardware-appliance-ai-in-a-box)
+   - [Software-Only Version](#software-only-version)
 5. [User Experience & Multi-Tenant Architecture](#5-user-experience--multi-tenant-architecture)
 6. [Target Use Cases](#6-target-use-cases)
 7. [Integrations & Extensibility](#7-integrations--extensibility)
 8. [Technical Architecture & Security](#8-technical-architecture--security)
+   - [Fully Local Mode (Air-Gapped)](#fully-local-mode-air-gapped)
+   - [Secure Hybrid Mode](#secure-hybrid-mode-cloud-llm-with-controlled-exposure)
+   - [Zero-Knowledge Hybrid Infrastructure](#zero-knowledge-hybrid-infrastructure)
 9. [Future Extensions (Roadmap)](#9-future-extensions-roadmap)
 
 ---
@@ -65,6 +70,9 @@ All components—vector database, knowledge storage, embedding generation, and L
 
 ### Secure Hybrid Mode (Cloud LLM with Controlled Exposure)
 If external cloud LLMs (e.g., OpenAI, Anthropic) are utilized for superior reasoning, the local core employs a pre-filtering and redaction layer. It applies token-level sensitive data masking and deterministic preprocessing before API transmission. The cloud LLM processes anonymized data, and the local system securely rehydrates the real data before displaying the response to the user.
+
+### Zero-Knowledge Hybrid Infrastructure
+To bridge the gap between cloud-scale reasoning and absolute data privacy, Omni implements a Zero-Knowledge architectural pattern. Sensitive data (PII, financial figures, legal identifiers) is masked with deterministic tokens on the local appliance before being transmitted to cloud LLMs. The "mapping keys" required to rehydrate this data into a human-readable format never leave the client's local network. This ensures that even in the event of a provider-side breach, any intercepted data remains mathematically indecipherable and useless to third parties.
 
 ## 9. Future Extensions (Roadmap)
 * **Agent-Based Automation:** Enabling the system to chain multiple tasks independently.
