@@ -1,0 +1,29 @@
+# Binary
+/omni
+/omni-arm64
+
+# Environment
+*.env
+!*.env.example
+
+# Data (runtime)
+/data/
+*.db
+*.db-wal
+*.db-shm
+vectors.bin
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Test
+coverage.out
+coverage.html
